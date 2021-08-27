@@ -1,31 +1,43 @@
 @import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css";
 
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+
 /*universal styling for card*/
 body{
-    background:#8FBC8F;
+    background:#fff;
 }
 
 .container{
     margin-top: 110px !important;
-    display:flex;
+    padding: 2px 16px;
 }
+
 .card {
-    border:none;
+    border: none;
     outline: none;
-    background-color:#fff;
+    background-color: #fff;
     border-radius: 20px;
     margin: 0.5rem;
     display: inline-block;
     max-width: 20rem;
     transition: transform .3s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
 }
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
 
 .card-img-top {
     width: 18rem;
     height: 10rem;
     margin: 0 auto;
     padding: 5%;
+    
     /* border-style: solid; */
     /* border-width: 1px; */
     /* border-color:#FDF5E6; */
@@ -37,26 +49,55 @@ body{
     transition: transform .3s;
 }
 
-.card-title{
-    font-size:20px;
-    padding :0 25px;
-    margin-bottom:10px;
+.card-title {
+    font-size: 20px;
+    padding: 0 25px;
+    margin-bottom: 10px;
     text-align: center;
-    color: MediumTurquoise;
-    
+    color: #17a2b8;
+    font-family: 'Poppins', sans-serif;
 }
 
-#card-price{
+#card-price {
     line-height: 17px;
-    font-size:20px;
-    font-weight :bold;
+    font-size: 20px;
     text-align: center;
-    color: MediumTurquoise;
+    color: #00bcd4;
+    font-family: 'Hachi Maru Pop', cursive;
 }
-
 
 .card-body {
     flex: 1 1 auto;
     padding: 1rem 1rem;
-    background-color: paleturquoise;
+    /* background-color: #fca215; */
+    /* color: aliceblue; */
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: antiquewhite;
 }
+
+
+.btn-lg {
+    width: 20rem;
+    height: 50px;
+    color: white;
+    background-color:tomato;
+    border-color: #fff;
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.btn-lg:hover{
+    width: 20rem;
+    height: 50px;
+    color: tomato;
+    background-color:#fff;
+    border-color:none;
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+

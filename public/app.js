@@ -1,26 +1,32 @@
 document.addEventListener("DOMContentLoaded",event =>{
     let filterVar = ["toy","bat","electric","mid aged","balls","dolls","vehicles","baby","flying","toy set"];
-    const app= firebase.app();
-    const db = firebase.firestore();
-    const myPost = db.collection('toys').where("category", "in", filterVar) ;
-    myPost.get()
-          .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-              console.log(doc);
-              const data = doc.data();
-              console.log(data);
-              render_card(data);
-            });
-          })
-
+    render_dropdown(filterVar)
+    getData(filterVar)
 });
 
-function render_card(data){
+function getData(filterVar){
+  const app= firebase.app();
+  const db = firebase.firestore();
+  const myPost = db.collection('toys').where("category", "in", filterVar) ;
+  
+  let cardContainer = document.getElementById("card-container");
+  removeAllChildNodes(cardContainer)
 
-    
+  myPost.get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            console.log(doc);
+            const data = doc.data();
+            console.log(data);
+            render_card(data);
+          });
+        })
+}
+
+function render_card(data){
     
     let cardContainer = document.getElementById("card-container");
-
+    
     let card = document.createElement('div');
     card.className = 'card';
 
@@ -41,12 +47,34 @@ function render_card(data){
     price.innerText = data.price;
     price.id = 'card-price';
 
-   
+    let btn = document.createElement('button');
+    btn.innerText =" Add to cart";
+    btn.className = "btn-lg";
+
     cardBody.appendChild(title);
     cardBody.appendChild(price);
     card.appendChild(imgcard);
     card.appendChild(cardBody);
+    card.appendChild(btn);
     cardContainer.appendChild(card);
 }
 
+function render_dropdown(data){
+  let dropdownElem = document.getElementById("dropdownElem");
 
+  data.forEach(element => {
+    let aElem = document.createElement('a');
+    aElem.innerText = element;
+    aElem.className = "dropdown-item";
+    aElem.addEventListener('click', function(){
+        getData([element]);
+    });  
+    dropdownElem.appendChild(aElem);
+  });
+}
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
