@@ -1,18 +1,23 @@
 document.addEventListener("DOMContentLoaded",event =>{
+    const app= firebase.app();
     let filterVar = ["toy","bat","electric","mid aged","balls","dolls","vehicles","baby","flying","toy set"];
+    // let filterVar = getListData()
     render_dropdown(filterVar)
-    getData(filterVar)
+    getCardData(filterVar)
 });
 
-function getData(filterVar){
-  const app= firebase.app();
+function getListData(){
+
+}
+
+function getCardData(filterVar){
   const db = firebase.firestore();
-  const myPost = db.collection('toys').where("category", "in", filterVar) ;
+  const getCards = db.collection('toys').where("category", "in", filterVar) ;
   
   let cardContainer = document.getElementById("card-container");
   removeAllChildNodes(cardContainer)
 
-  myPost.get()
+  getCards.get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             console.log(doc);
@@ -67,7 +72,7 @@ function render_dropdown(data){
     aElem.innerText = element;
     aElem.className = "dropdown-item";
     aElem.addEventListener('click', function(){
-        getData([element]);
+      getCardData([element]);
     });  
     dropdownElem.appendChild(aElem);
   });
