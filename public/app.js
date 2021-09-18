@@ -29,7 +29,7 @@ function getCardData(filterVar, productId = null){
   if (productId) {
     param1 = "productId"
     condition = "=="
-    param2 = Number(productId)
+    param2 = productId
   } else {
     param1 = "category"
     condition = "in"
@@ -72,14 +72,15 @@ function render_card(data){
     title.className = 'card-title';
     title.id ='title';
 
-    let price = document.createElement('p');
-    price.innerText = data.price;
-    price.id = 'card-price';
+    let details = document.createElement('p');
+    details.innerText = data.details;
+    details.className = 'card-text';
+    details.id = 'card-details';
 
     wBtn = render_whatsapp_btn(data.productId)
 
     cardBody.appendChild(title);
-    cardBody.appendChild(price);
+    cardBody.appendChild(details);
     card.appendChild(imgcard);
     card.appendChild(cardBody);
     card.appendChild(wBtn);
@@ -92,8 +93,9 @@ function render_whatsapp_btn(productId){
   btn.ariaPressed = "true"
   var base_url = window.location.origin;
   var productLink = base_url+"?productId="+productId
+  // btn.href = "https://wa.me/916238905264?text=I'm%20interested%20in%20this%20product%20"+productLink+"%20, Pls call me back"
   btn.href = "https://wa.me/6596452181?text=I'm%20interested%20in%20this%20product%20"+productLink+"%20, Pls call me back"
-  btn.innerText ="Contact us for details";
+  btn.innerText ="Contact Us for details";
   btn.className = "btn-lg btn active";
   return btn
 }
