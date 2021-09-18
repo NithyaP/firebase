@@ -58,9 +58,21 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
-.card-text {
-    margin-bottom: 0;
-    font-size: small;
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card-button-area {
+    width: 20rem;
+    height: 50px;
+    color: white;
+    background-color:#2ccc51;
+    border-color: #fff;
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
 #card-price {
@@ -81,6 +93,17 @@ body{
     border-top-color: antiquewhite;
 }
 
+.card-icons-cust{
+    width: 15%; 
+    height:100%;
+    float: left;
+}
+
+.btn-text {
+    width: 70%; 
+    height:100%;
+    float: left;
+}
 
 .btn-lg {
     width: 20rem;
