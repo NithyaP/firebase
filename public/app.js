@@ -104,7 +104,7 @@ function render_phone_btn(){
   btn.className = "card-icons-cust"
   var base_url = window.location.origin;
   var productLink = base_url
-  btn.href = "tel:916238905264"
+  btn.href = "tel:+916238905264"
   
   let img = document.createElement('img');
   img.src = "images/phone.png";
