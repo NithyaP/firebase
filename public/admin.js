@@ -71,7 +71,7 @@ document.getElementById("login").onclick = function(e){
   $("#LoginPanel").show();
 }
 document.getElementById("home").onclick = function(e){
-  $("#HomePanel").show();
+  // $("#HomePanel").show();
   $("#AddToyPanel").hide();
   $("#LoginPanel").hide();
 }
@@ -164,10 +164,10 @@ function renderNavBarLogin(){
 function renderNavBarMain(){
   $("#navBarList").show();
   $("#login").hide();
-  $("#home").show();
+  // $("#home").show();
   $("#addToy").show();
   $("#logout").show();
   $("#LoginPanel").hide();
-  $("#HomePanel").show();
-  $("#AddToyPanel").hide();
+  // $("#HomePanel").show();
+  $("#AddToyPanel").show();
 }
