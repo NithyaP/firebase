@@ -14,7 +14,7 @@
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/8.10.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <!-- <script defer src="/__/firebase/8.10.0/firebase-auth.js"></script> -->
+    <script defer src="/__/firebase/8.10.0/firebase-auth.js"></script>
     <script defer src="/__/firebase/8.10.0/firebase-firestore.js"></script>
     <script defer src="/__/firebase/8.10.0/firebase-firestore.js"></script>
     <!-- <script defer src="/__/firebase/8.10.0/firebase-functions.js"></script> -->
@@ -41,18 +41,36 @@
       </a>
     
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="display: none;" id="navBarList">
           <li class="nav-item active">
-            <a class="nav-link" id="home">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" id="login" href="#">Login <span class="sr-only"></span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" id="addToy">Add Toy</a>
+          <li class="nav-item active">
+            <a class="nav-link" id="home" href="#">Home <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" id="addToy" href="#">Add Toy</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" id="logout" href="#">Log Out <span class="sr-only"></span></a>
           </li>
         </ul>
       </div>
     </nav>
-    <div class="container-xl" style="margin-top: 4rem;">                
-      <div id="HomePanel">
+
+    <div class="container-xl" style="margin-top: 4rem;">
+      <div id="LoginPanel" style="display: none;">
+        <div class="card">
+          <div class="card-header">
+            Login
+          </div>
+          <div class="card-body">
+            <a id="gLogin" class="btn btn-primary">Login using Gmail ID</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="HomePanel" style="display: none;">
         this is home
       </div>
 
@@ -78,7 +96,7 @@
           </div>
           <button class="btn btn-primary" id="upload">Add Toy</button>
         </form>
-      </div>        
+      </div> 
     </div>
     <script src="admin.js"></script>
   </body>

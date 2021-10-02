@@ -13,16 +13,83 @@ filterVar.forEach((element, index) => {
 })
 
 
+document.addEventListener("DOMContentLoaded",event =>{
+
+  const app= firebase.app();
+  checkAuthState()
+  
+});
+
+function checkAuthState(){
+  firebase.auth().onAuthStateChanged(user=>{
+    if(user){
+      console.log("user logged in")
+      renderNavBarMain();
+    }else{
+      renderNavBarLogin();
+    }
+  })
+}
+
+
+
 var reader = new FileReader();
 // const db = firebase.firestore();
+
+// Login click
+document.getElementById("gLogin").onclick = function(e){
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      /** @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
+
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      renderNavBarMain()
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    })
+}
+
+
+// NAV panel click toggles
+document.getElementById("login").onclick = function(e){
+  $("#HomePanel").hide();
+  $("#AddToyPanel").hide();
+  $("#LoginPanel").show();
+}
 document.getElementById("home").onclick = function(e){
-  document.getElementById("HomePanel").style.display = "inline-block";
-  document.getElementById("AddToyPanel").style.display = "none"
+  $("#HomePanel").show();
+  $("#AddToyPanel").hide();
+  $("#LoginPanel").hide();
 }
 document.getElementById("addToy").onclick = function(e){
-  document.getElementById("HomePanel").style.display = "none";
-  document.getElementById("AddToyPanel").style.display = "inline-block"
+  $("#HomePanel").hide();
+  $("#AddToyPanel").show();
+  $("#LoginPanel").hide();
 }
+
+document.getElementById("logout").onclick = function(e){
+  firebase.auth().signOut().then(() => {
+      renderNavBarLogin()
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+}
+
 // Select Image
 document.getElementById("myimg").onclick = function(e){
     var input = document.createElement("input");
@@ -80,4 +147,27 @@ document.getElementById("upload").onclick = function(){
 
         });
       });
+}
+
+
+function renderNavBarLogin(){
+  $("#navBarList").show();
+  $("#login").show();
+  $("#home").hide();
+  $("#addToy").hide();
+  $("#logout").hide();
+  $("#LoginPanel").show();
+  $("#HomePanel").hide();
+  $("#AddToyPanel").hide();
+}
+
+function renderNavBarMain(){
+  $("#navBarList").show();
+  $("#login").hide();
+  $("#home").show();
+  $("#addToy").show();
+  $("#logout").show();
+  $("#LoginPanel").hide();
+  $("#HomePanel").show();
+  $("#AddToyPanel").hide();
 }
