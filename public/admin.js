@@ -153,7 +153,7 @@ document.getElementById("upload").onclick = function(){
             imgurl: imgUrl,
             name: toyName,
             details: document.getElementById('toyDetails').value,
-            productId: document.getElementById('toyProductId').value
+            productId: document.getElementById('toyProductId').value.replace(/\s/g, '')
         })
         .then(() => {
             popupAlert('New Toy record is added successfully', 'success')
